@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const lostitemschema = new mongoose.Schema(
+const founditemschema = new mongoose.Schema(
   {
     category: {
       type: String,
@@ -27,9 +27,13 @@ const lostitemschema = new mongoose.Schema(
       type: String,
       required: [true, "Enter the location"],
     },
+    submittedAt:{
+        type: String,
+      required: [true, "Enter the location"],
+    }
   },
   { timestamps: true }
 );
-const LostItems = mongoose.model("LostItems", lostitemschema);
+const FoundItems = mongoose.model("LostItems", founditemschema);
 
-export {LostItems}; 
+export {FoundItems}; 
