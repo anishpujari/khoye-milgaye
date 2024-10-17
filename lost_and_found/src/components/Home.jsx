@@ -9,6 +9,8 @@ function HomePage() {
             <div className="mainLanding"></div>
             <button type="button" onClick={() => navigate("/report")}>Report</button>
             <button type="button" onClick={() => navigate("/find")}>Find</button>
+            <button type="button" onClick={() => navigate("/login")}>Login</button>
+            <button type="button" onClick={() => navigate("/register")}>Register</button>
         </div>
     );
 }
