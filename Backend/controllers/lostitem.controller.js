@@ -1,15 +1,15 @@
-import { FoundItems } from "../models/FoundItems";
+import { LostItems } from "../models/LostItem";
 import { User } from "../models/User";
 export const createLostItem=async(req,res)=>{
     try {
         const{category,brand,image,size,colour,location,description}=req.body
         const userId = req.user.id; 
-        const foundItem=new FoundItems(
+        const  lostItem=new LostItems(
             {category,brand,image,size,colour,location,description,user:userId}
         )
-        await foundItem.save()
+        await  lostItem.save()
         const user=await User.findById(userId)
-        user.foundItems.push(foundItem)
+        user. lostItems.push( lostItem)
         await user.save()
 
         res.status(201).json({ message: 'Lost item created successfully', lostItem });
@@ -18,10 +18,10 @@ export const createLostItem=async(req,res)=>{
     }
 }
 
-export const getAllFoundItems = async (req, res) => {
+export const getAllLostItems = async (req, res) => {
     try {
-      const foundItems = await FoundItems.find().populate('user', 'name email');
-      res.status(200).json(foundItems);
+      const  lostItems = await LostItems.find().populate('user', 'name email');
+      res.status(200).json( lostItems);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
@@ -29,11 +29,11 @@ export const getAllFoundItems = async (req, res) => {
 
   export const getLostItemById = async (req, res) => {
     try {
-      const foundItem = await FoundItems.findById(req.params.id);
-      if (!foundItem) {
+      const lostItem = await LostItems.findById(req.params.id);
+      if (!lostItem) {
         return res.status(404).json({ message: 'Lost item not found' });
       }
-      res.status(200).json(foundItem);
+      res.status(200).json( lostItem);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
