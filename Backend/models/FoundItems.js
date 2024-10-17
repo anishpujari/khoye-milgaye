@@ -30,7 +30,12 @@ const founditemschema = new mongoose.Schema(
     submittedAt:{
         type: String,
       required: [true, "Enter the location"],
-    }
+    },
+    user: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "User", 
+        required: true 
+    },
   },
   { timestamps: true }
 );

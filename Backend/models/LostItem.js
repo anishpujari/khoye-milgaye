@@ -27,9 +27,14 @@ const lostitemschema = new mongoose.Schema(
       type: String,
       required: [true, "Enter the location"],
     },
+    user: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "User", 
+        required: true 
+    },
   },
   { timestamps: true }
 );
 const LostItems = mongoose.model("LostItems", lostitemschema);
 
-export {LostItems}; 
+export { LostItems };
