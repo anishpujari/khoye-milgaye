@@ -4,6 +4,8 @@ import HomePage from "./components/Home";
 import FindForm from "./components/Find";
 import ReportForm from "./components/Report";
 import Navbar from "./components/Navbar"; // Import Navbar component if you have it
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
     return (
@@ -14,6 +16,8 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/find" element={<FindForm />} />
                     <Route path="/report" element={<ReportForm />} />
+                    <Route path="/login" element={<Login/>} />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
             </div>
         </Router>
