@@ -25,11 +25,11 @@ function Item(){
         const user=JSON.parse(localStorage.getItem("user"));
         // console.log(user);
         setuserid(user._id)
-        {
+        
             
             setfoundData(user.foundItems)
-        }
-        // console.log(user);
+        
+        console.log(user);
         
     }
     useEffect(()=>{
