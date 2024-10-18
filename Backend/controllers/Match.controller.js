@@ -15,8 +15,7 @@ export const getMatchingFoundItems = async (req, res) => {
           const foundItems = await FoundItems.find({
             $or: [
               { category: lostItem.category },
-              { colour: lostItem.colour },
-              { brand: lostItem.brand },
+             
               
             ]
           }).populate('user', 'name email');
