@@ -57,7 +57,12 @@ function Match({ data, userId }) {
         console.log(re);
         
         // Update the found state
-       
+        setFound(prevFound => {
+          const updatedFound = [...prevFound, re];
+          console.log('Found items after update:', updatedFound); // This will show the updated state
+          console.log('Found items after update:', updatedFound.length);
+          return updatedFound;
+        });
        
       } catch (error) {
         console.error('Error calling similarity API:', error);
