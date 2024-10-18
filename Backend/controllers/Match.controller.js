@@ -6,7 +6,7 @@ export const getMatchingFoundItems = async (req, res) => {
     
         const userId = req.body; 
         
-    const lostItemId = req.params.id; 
+    const lostItemId = req.body; 
         const lostItem = await LostItems.findOne({ _id: lostItemId, user: userId });
         if (!lostItem) {
             return res.status(404).json({ message: 'Lost item not found or does not belong to the user.' });

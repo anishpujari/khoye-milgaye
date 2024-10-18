@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 
-function Match() {
-    
+function Match({data,userId}) {
+    function getData(){
+        console.log(data,userId);
+    }
+    getData() 
   return (
+  
    <>
    <div>
 

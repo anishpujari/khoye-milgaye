@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Match from './Match';
 
-function Itemcard({data}) {
+function Itemcard({data,click,setClick,data1,setData}) {
     console.log("items",data);
+    
     
   return (
    <>
   
-
-<div class=" text-gray-900  h-full w-full  ">
+<div class=" text-gray-900  h-full w-full  " onClick={()=>{setClick(!click)
+    setData(data._id)
+}}>
   <div class="bg-gray-200  p-8 flex items-center justify-center px-5 w-full ">
     <div class="bg-white rounded-lg overflow-hidde shadow-2xl xl:1/5   lg:w-full   md:w-1/3 sm:w-1/2  h-full ">
       
@@ -35,6 +38,7 @@ function Itemcard({data}) {
     </div>
   </div>
 </div>
+
    </>
   )
 }

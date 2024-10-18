@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Itemcard from "./Itemcard";
+import Match from "./Match";
 
 function Item(){
     const [lostdata,setlostData]=useState([]);
     const [founddata,setfoundData]=useState([]);
+    const[data1,setData]=useState()
+    const[click,setClick]=useState(false)
+    const[userId,setuserid]=useState()
     function getLostData(){
+
         const user=JSON.parse(localStorage.getItem("user"));
+        setuserid(user._id)
         console.log(user);
         
         {
@@ -18,7 +24,7 @@ function Item(){
     function getFoundData(){
         const user=JSON.parse(localStorage.getItem("user"));
         // console.log(user);
-        
+        setuserid(user._id)
         {
             
             setfoundData(user.foundItems)
@@ -32,36 +38,39 @@ function Item(){
 
     },[])
     return(
-        <div id="item " className="sm:flex ">
+       <>
+       {!click? <div id="item " className="sm:flex ">
 
-            <div id="lostItems" className="bg-gray-200">
-                <h1 className="flex justify-center text-xl font-semibold pt-2">LostItems</h1>
-            {
-                lostdata.map((item)=>{
-                    return(
-                        <div>
-<Itemcard data={item}/>
-                        </div>
-                    )
-                })
-            }
+<div id="lostItems" className="bg-gray-200">
+    <h1 className="flex justify-center text-xl font-semibold pt-2">LostItems</h1>
+{
+    lostdata.map((item)=>{
+        return(
+            <div>
+<Itemcard data={item} click={click} setClick={setClick} data1={data1} setData={setData}/>
             </div>
-            <div id="foundItems" className="bg-gray-200">
-            <h1 className="flex justify-center text-xl font-semibold pt-2">FoundItems</h1>
-            {/* <div id="lostItems"> */}
-            {
-                founddata.map((item)=>{
-                    return(
-                        <div>
-<Itemcard data={item}/>
-                        </div>
-                    )
-                })
-            }
-            {/* </div> */}
+        )
+    })
+}
+</div>
+<div id="foundItems" className="bg-gray-200">
+<h1 className="flex justify-center text-xl font-semibold pt-2">FoundItems</h1>
+{/* <div id="lostItems"> */}
+{
+    founddata.map((item)=>{
+        return(
+            <div>
+<Itemcard data={item} click={click} setClick={setClick}  data1={data1} setData={setData}/>
+            </div>
+        )
+    })
+}
+{/* </div> */}
 
 </div>
-        </div>
+</div>:<Match data={data1} userId={userId}/>}
+       
+       </>
     );
 }
 
