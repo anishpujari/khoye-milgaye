@@ -29,8 +29,7 @@ function Itemcard({data}) {
         <div class="mt-2 flex flex-col ">
           
               <span class="ml- text-gray-600 text-sm">Location: {data?.location}</span>
-
-
+              {data.submittedAt?              <span class="ml- text-gray-600 text-sm">Submitted At: {data?.submittedAt}</span>:null}
         </div>
       </div>
     </div>
