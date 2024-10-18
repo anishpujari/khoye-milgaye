@@ -7,9 +7,9 @@ function Itemcard({data}) {
    <>
   
 
-<div class=" text-gray-900 ">
-  <div class="bg-gray-200  p-8 flex items-center justify-center">
-    <div class="bg-white rounded-lg overflow-hidden shadow-2xl xl:w-1/5 lg:w-1/4 md:w-1/3 sm:w-1/2 sm:h-32">
+<div class=" text-gray-900  h-full w-full  ">
+  <div class="bg-gray-200  p-8 flex items-center justify-center px-5 w-full ">
+    <div class="bg-white rounded-lg overflow-hidde shadow-2xl xl:1/5   lg:w-full   md:w-1/3 sm:w-1/2  h-full ">
       
   
       <img class=" w-full object-cover object-end" src="https://content.presspage.com/uploads/633/f560a24d-88da-446a-9746-31ac89eb5d9e/1920_gp-ln-23-007-pixel7a-6-48-master-full-uk-blue-240323.png?10000" alt="Home in Countryside" />
