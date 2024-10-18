@@ -44,6 +44,10 @@ function Login() {
         if(data.success === true){
         
           localStorage.setItem("user", JSON.stringify(data.user));
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("id", data.userId);
+       const u=localStorage.getItem('user')
+       console.log(u);
        
           setLoading(true);
           navigate("/");

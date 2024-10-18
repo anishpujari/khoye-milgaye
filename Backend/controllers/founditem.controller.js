@@ -1,22 +1,53 @@
-import { FoundItems } from "../models/FoundItems";
-import { User } from "../models/User";
-export const createFoundItem=async(req,res)=>{
-    try {
-        const{category,brand,image,size,colour,location,description,submittedat}=req.body
-        const userId = req.user.id; 
-        const foundItem=new FoundItems(
-            {category,brand,image,size,colour,location,description,submittedat,user:userId}
-        )
-        await foundItem.save()
-        const user=await User.findById(userId)
-        user.foundItems.push(foundItem)
-        await user.save()
+import { FoundItems } from "../models/FoundItems.js";
+import { User } from "../models/User.js";
+import mongoose from "mongoose";
+export const createFoundItem = async (req, res) => {
+  try {
+      const { category, brand, size, colour, location, description, submittedat, userId } = req.body;
 
-        res.status(201).json({ message: 'Found item created successfully',foundItem });
-    } catch (error) {
-        
-    }
-}
+      
+      console.log(req.body);
+
+    
+      const userObjectId = mongoose.Types.ObjectId.isValid(userId) ? new mongoose.Types.ObjectId(userId) : null;
+
+  
+      if (!userObjectId) {
+          return res.status(400).json({ message: "Invalid userId" });
+      }
+
+     
+      const foundItem = await FoundItems.create({
+          category,
+          brand,
+          size,
+          colour,
+          location,
+          description,
+          submittedAt: submittedat, 
+          user: userId, 
+      });
+
+      await foundItem.save();
+
+    
+      const user = await User.findById(userObjectId);
+
+      if (!user) {
+          return res.status(404).json({ message: "User not found" });
+      }
+
+      
+      user.foundItems.push(foundItem);
+      await user.save();
+
+    
+      res.status(201).json({ message: 'Found item created successfully', foundItem ,user});
+  } catch (error) {
+      console.error("Error creating found item:", error);
+      res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+};
 
 export const getAllFoundItems = async (req, res) => {
     try {

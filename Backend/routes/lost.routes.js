@@ -1,6 +1,6 @@
 import express from "express"
 
-import { createLostItem,getAllLostItems,getLostItemById } from "../controllers/lostitem.controller"
+import { createLostItem,getAllLostItems,getLostItemById } from "../controllers/lostitem.controller.js"
 
 const lostrouter=express.Router()
 lostrouter.post("/create",createLostItem)

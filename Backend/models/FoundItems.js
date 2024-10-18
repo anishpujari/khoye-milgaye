@@ -39,6 +39,6 @@ const founditemschema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-const FoundItems = mongoose.model("LostItems", founditemschema);
+const FoundItems = mongoose.model("FoundItems", founditemschema);
 
 export {FoundItems}; 
