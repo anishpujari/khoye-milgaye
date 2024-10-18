@@ -77,8 +77,18 @@ function Match({ data, userId }) {
   return (
     <>
       <div>
-        {lost ? <Itemcard data={lost} /> : <p>Loading lost item...</p>}
-        
+        {/* {lost ? <Itemcard data={lost} /> : <p>Loading lost item...</p>} */}
+        {
+            found?<div>
+                {
+            found.map((item)=>{
+                console.log(found.length);
+                
+                return <Itemcard data={item.data} key={item.similarity} />
+            })
+        }
+                </div>:<p>Loading lost item...</p>
+        }
       </div>
     </>
   );
