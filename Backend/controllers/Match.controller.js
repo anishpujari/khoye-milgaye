@@ -1,10 +1,10 @@
-import { LostItems } from "../models/LostItem";
-import { FoundItems } from "../models/FoundItems";
+import { LostItems } from "../models/LostItem.js";
+import { FoundItems } from "../models/FoundItems.js";
 
 export const getMatchingFoundItems = async (req, res) => {
     try {
     
-        const userId = req.user.id; 
+        const userId = req.body; 
         
     const lostItemId = req.params.id; 
         const lostItem = await LostItems.findOne({ _id: lostItemId, user: userId });

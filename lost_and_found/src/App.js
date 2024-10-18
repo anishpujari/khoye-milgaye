@@ -6,6 +6,7 @@ import ReportForm from "./components/Report";
 import Navbar from "./components/Navbar"; // Import Navbar component if you have it
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Match from "./components/Match";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/report" element={<ReportForm />} />
                     <Route path="/login" element={<Login/>} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/match" element={<Match/>}/>
                 </Routes>
             </div>
         </Router>

@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 function Navbar() {
     return (
         <nav>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/find">Find</Link></li>
-                <li><Link to="/report">Report</Link></li>
+            <ul className="flex justify-between bg-gray-800 text-white font-semibold text-md py-5 px-10">
+                <li><Link to="/" className="hover:font-bold hover:text-green-500 ">Home</Link></li>
+                <li><Link to="/login" className="hover:font-bold hover:text-green-500 ">Login/Register</Link></li>
+                <li><Link to="/find" className="hover:font-bold hover:text-green-500 ">Find</Link></li>
+                <li><Link to="/report" className="hover:font-bold hover:text-green-500 ">Report</Link></li>
+            
+               
+                <li><Link to="/match" className="hover:font-bold hover:text-green-500 ">Match</Link></li>
             </ul>
         </nav>
     );
